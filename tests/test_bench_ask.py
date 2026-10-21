@@ -22,3 +22,9 @@ def test_summarize_all_errors():
 def test_interval_respects_rate_limit():
     assert interval_for("gemini-3.8-flash") > 60 / 5
     assert interval_for("unknown-model") == interval_for("gemini-3.8-flash")
+
+
+def test_summarize_lists_timeout_with_api_errors():
+    records = [Record("m", "short", 120.0, error="timeout"), Record("m", "short", 0.2, error=429)]
+    row = summarize(records).splitlines()[2]
+    assert row.endswith("| 429, timeout |")
