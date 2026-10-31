@@ -1,0 +1,53 @@
+{
+  "config": {
+    "base_model": "Qwen/Qwen3.5-0.8B",
+    "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "seed": 42,
+    "num_train_epochs": 8,
+    "warmup_steps": 6,
+    "lr": 0.0002,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "max_seq_len": 512,
+    "max_new_tokens": 160,
+    "gen": {
+      "do_sample": false
+    }
+  },
+  "versions": {
+    "transformers": "5.18.0",
+    "peft": "0.21.1",
+    "trl": "1.14.2",
+    "torch": "2.11.0+cu130"
+  },
+  "method": "LoRA（量子化なし）。学習データは scripts/make_sft_dataset.py の出力",
+  "n_train": 116,
+  "n_eval": 28,
+  "train_seconds": 284,
+  "final_loss": 0.09948639869689942,
+  "before": {
+    "label": "before",
+    "A_用語集の語_正答率": 0.0,
+    "B_言い換え_正答率": 0.2,
+    "C1_一般語_正答率": 0.75,
+    "C2_架空語_分からないと答えた率": 0.0,
+    "seconds": 244.8
+  },
+  "search": {
+    "label": "search",
+    "A_用語集の語_正答率": 0.6,
+    "B_言い換え_正答率": 0.6,
+    "C1_一般語_正答率": 0.75,
+    "C2_架空語_分からないと答えた率": 0.0,
+    "seconds": 108.1
+  },
+  "after": {
+    "label": "after",
+    "A_用語集の語_正答率": 1.0,
+    "B_言い換え_正答率": 0.3,
+    "C1_一般語_正答率": 0.25,
+    "C2_架空語_分からないと答えた率": 0.0,
+    "seconds": 109.5
+  },
+  "executed_training_myself": true
+}
